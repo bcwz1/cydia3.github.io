@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>简单弹窗</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .pop {
+            width: 400px;
+            height: 300px;
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            display: none;
+            animation: pop 1s ease-in-out 0s;
+        }
+        @keyframes pop {
+            from {
+                height: 0;
+            }
+            to {
+                height: 300px;
+            }
+        }
+        .down {
+            width: 400px;
+            height: 0;
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            display: block;
+            animation: out 1s ease-in-out;
+        }
+        @keyframes out {
+            from {
+                height: 300px;
+            }
+            to {
+                height: 0;
+            }
+        }
+        .img1 {
+            width: 400px;
+            height: 300px;
+            vertical-align: top;
+        }
+    </style>
+</head>
+<body>
+<div class="pop" id="pop">
+    <img src="images/01.jpg" alt="" class="img1">
+</div>
+</body>
+<script>
+    window.onload = function () {
+        timer = window.setInterval(imgBlock, 2000);
+    };
+    function imgBlock() {
+        var pop = document.getElementById('pop');
+        pop.style.display = 'block';
+        timer2 = window.setInterval(imgNone,5000);
+    }
+    function imgNone() {
+        var pop = document.getElementById('pop');
+        pop.className = 'down';
+        clearInterval(timer);
+        clearInterval(timer2);
+    }
+</script>
+</html>
+————————————————
+版权声明：本文为CSDN博主「安心写bug」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/qq_36963372/article/details/82261747
